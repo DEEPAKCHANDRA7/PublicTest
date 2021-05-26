@@ -1,0 +1,411 @@
+TestNG Test Case Priority:
+In TestNG "Priority" is used to schedule the test cases. When there are multiple test cases, we want to execute test cases in order. Like First we need to execute a test case "Registration" before login.
+
+In order to achive, we use need to add annotation as @Test(priority=??). The default value will be zero for priority.
+
+If you don't mention the priority, it will take all the test cases as "priority=0" and execute.
+
+If we define priority as "priority=", these test cases will get executed only when all the test cases which don't have any priority as the default priority will be set to "priority=0"
+Example:
+import org.testng.annotations.Test;
+public class testNGPriorityExample {
+	@Test
+	public void registerAccount()
+	{
+		System.out.println("First register your account");
+	}
+	@Test(priority=2)
+	public void sendEmail()
+	{
+		System.out.println("Send email after login");
+	}
+	@Test(priority=1)
+	public void login()
+	{
+		System.out.println("Login to the account after registration");
+	} 7,590.00 
+
+}
+Groups in TestNG:
+TestNG allows us to perform sophisticated groupings of test methods.
+
+Using TestNG we can execute only set of groups while excluding another set. This gives us the maximum flexibility in divide tests and doesn't require us to recompile anything if you want to run two different sets of tests back to back.
+
+Groups are specified in testng.xml file and can be used either under the or tag. Groups specified in the tag apply to all the tags underneath.
+Example:
+package com.example.group;
+import org.testng.annotations.Test;
+public class groupExamples {
+	@Test(groups="Regression")
+	public void testCaseOne()
+	{
+	System.out.println("Im in testCaseOne - And in Regression Group");
+	}
+	@Test(groups="Regression")
+	public void testCaseTwo(){
+	System.out.println("Im in testCaseTwo - And in Regression Group");
+	}
+	@Test(groups="Smoke Test")
+	public void testCaseThree(){
+	System.out.println("Im in testCaseThree - And in Smoke Test Group");
+	}
+	@Test(groups="Regression")
+	public void testCaseFour(){
+	System.out.println("Im in testCaseFour - And in Regression Group");
+	}
+}
+
+XML FILE Configuration:
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="Sample Suite">
+  <test name="testing">
+  	<groups>
+      <run>
+        <include name="Regression"/>
+      </run>
+    </groups>
+    <classes>
+       <class name="com.example.group.groupExamples" />
+    </classes>
+  </test>
+</suite>
+Parameterization in TestNG using testng.xml:
+Some times it may be required for us to pass values to test methods during run time. Like we can pass user name and password through testng.xml instead of hard coding it in testmethods.
+ or we can pass browser name as parameter to execute in specific browser.
+Example:
+package com.parameterization;
+
+import org.testng.annotations.Parameters;
+import org.testng.annotations.Test;
+
+public class TestParameters {
+	
+	@Parameters({ "browser" })
+	@Test
+	public void testCaseOne(String browser) {
+		System.out.println("browser passed as :- " + browser);
+	}
+
+	@Parameters({ "username", "password" })
+	@Test
+	public void testCaseTwo(String username, String password) {
+		System.out.println("Parameter for User Name passed as :- " + username);
+		System.out.println("Parameter for Password passed as :- " + password);
+	}
+}
+testng.xml File:
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Parameterization Test Suite">
+	<test name="Testing Parameterization">
+	<parameter name="browser" value="Firefox"/>
+	<parameter name="username" value="testuser"/>
+	<parameter name="password" value="testpassword"/>
+		<classes>
+			<class name="com.parameterization.TestParameters" />
+		</classes>
+	</test>
+</suite>
+
+
+For of execution of TestNg   annotations:
+in Before Suite
+in Before Test
+in Before Class
+in Before Method
+in Test Case 1
+in After Method
+in Before Method
+in Test Case 2
+in After Method
+in After Class
+in After Test
+in After Suite
+
+Concepts to make strong impact:
+1)Web Tables
+2)Calendars (Different types of Calendars handled using Selenium)
+3)Extent reports
+4)Ajax calls
+5)Drop down concepts------miscellaneous(how to select the menu options)
+6)Listeners concept in Testng
+7)Java concepts&& programs
+8)Parsing concepts in Java && Wrapper Classes
+9)Usage of Javascript Executor in selenium
+10)Usage of CSS selector
+11)Need to learn again the Data driven Testing
+12)Parallel,groups & other concepts in Testng
+13)Real time interviews Q/A for Selenium and Java
+14)Handling windows concepts
+15)Handling Frames
+16)wait concepts
+17)Need to list out the Java concepts
+18)Need to revise POM 
+19)Taking Screenshots for Failed Testcases only
+20) String tp date and Date to String conversions
+21) TestNg Listeners
+-------------------------------------JAVA Conversion------------------------------
+
+----Converting String to Char--------------------------------------
+public class StringToCharExample2
+{  
+public static void main(String args[]){  
+String s="hello";    
+for(int i=0; i<s.length();i++){  
+        char c = s.charAt(i);  
+        System.out.println("char at "+i+" index is: "+c);  
+}   
+}
+}  
+
+--Java String to char Example: toCharArray() method--
+
+public class StringToCharExample3{  
+public static void main(String args[]){  
+String s1="hello";    
+char[] ch=s1.toCharArray();    
+for(int i=0;i<ch.length;i++){    
+System.out.println("char at "+i+" index is: "+ch[i]);   
+}  
+}}  
+--------Java Convert char to String--------------------------
+public class CharToStringExample1{  
+public static void main(String args[]){  
+char c='S';  
+String s=String.valueOf(c);  
+System.out.println("String is: "+s);  
+}}  
+
+or
+
+public class CharToStringExample2{  
+public static void main(String args[]){  
+
+char c='M';    
+String s=Character.toString(c);  
+System.out.println("String is: "+s);    
+}}  
+----------------------------Java Convert String to boolean------------------------
+
+public class StringToBooleanExample{  
+public static void main(String args[]){  
+String s1="true";  
+String s2="TRue";  
+String s3="ok";  
+boolean b1=Boolean.parseBoolean(s1);  
+boolean b2=Boolean.parseBoolean(s2);  
+boolean b3=Boolean.parseBoolean(s3);  
+System.out.println(b1);  
+System.out.println(b2);  
+System.out.println(b3);  
+}}  
+---------------------------Java Convert boolean to String----------------------------
+
+
+
+public class BooleanToStringExample1{  
+public static void main(String args[]){  
+boolean b1=true;  
+boolean b2=false;  
+String s1=String.valueOf(b1);  
+String s2=String.valueOf(b2);  
+System.out.println(s1);  
+System.out.println(s2);  
+}}  
+
+or
+
+public class BooleanToStringExample2{  
+public static void main(String args[]){  
+boolean b1=true;  
+boolean b2=false;  
+String s1=Boolean.toString(b1);  
+String s2=Boolean.toString(b2);  
+System.out.println(s1);  
+System.out.println(s2);  
+}}  
+
+-----------------------key notes-----------------
+No, we can't override static methods.
+
+Can we make constructors static?
+As we know that the static context (method, block, or variable) belongs to the class, not the object. Since Constructors are invoked only when the object is created,
+ there is no sense to make the constructors static. However, if you try to do so, the compiler will show the compiler error.
+
+
+--------------------------------Method Overriding in Java-----------------------------------------------------
+
+If a subclass provides the specific implementation of the method that has been declared by one of its parent class, it is known as method overriding.
+Rules for Java Method Overriding:
+The method must have the same name as in the parent class
+The method must have the same parameter as in the parent class.
+There must be an IS-A relationship (inheritance).
+
+-----------------------------------------------Method Overloading in Java-----------------------------------------------
+If a class has multiple methods having same name but different in parameters, it is known as Method Overloading.
+
+There are two ways to overload the method in java
+
+By changing number of arguments.
+By changing the data type.
+
+--------------------------------ARRAY LIST BASICS----------------------------------------------
+
+conversion of Array list into Array:using  toArray() method
+ArrayList al = new ArrayList(); 
+
+al.add("anu");  
+ al.add("Sravya");  
+ al.add("ratan");  
+ al.add("natraj");  
+ String[] a = new String[al.size()];   
+al.toArray(a);     
+
+conversion of Array into Array List using   asList() method:
+String[] str={"ratan","Sravya","aruna"};   
+ArrayList<String> al = new ArrayList<String>(Arrays.asList(str));  
+ al.add("newperson-1");  
+ al.add("newperson-2");  
+ //printing data by using enhanced for loop 
+ for (String s: al) 
+  { 
+System.out.println(s);   }  
+
+-------------------------------------12. How to scroll down a page using JavaScript in Selenium?------------------------------------------------
+We can scroll down a page by using window.scrollBy() function.
+ Example:
+((JavascriptExecutor) driver).executeScript("window.scrollBy(0,500)");
+
+
+How to scroll down to a particular element?
+
+((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", element);
+
+Conncection to database:
+
+public void Connection(){  
+		try{  
+		//step1 load the driver class  
+		Class.forName("oracle.jdbc.driver.OracleDriver");  
+		  
+		//step2 create  the connection object  
+		Connection con=DriverManager.getConnection("jdbc:oracle:thin:@ffeuswduxdb159:1521:ITVQ13","tuscany","TusEpisode_2");  
+		  
+		//step3 create the statement object  
+		Statement stmt=con.createStatement();  
+		  
+		//step4 execute query  
+		ResultSet rs=stmt.executeQuery("select count(*)  from title_list");  
+		
+		///System.out.println(rs.getInt(1)+"  "+rs.getString(2)+"  "+rs.getString(3));  
+		  
+		//step5 close the connection object  
+			System.out.println(rs);
+			
+			rs=rs=stmt.executeQuery("select count(*)  from title_list"); 
+		
+		con.close();  
+
+
+
+Some important sql queries:
+
+1)DELETE FROM Student WHERE NAME = 'Ram';
+
+2)UPDATE Customers
+SET ContactName = 'Alfred Schmidt', City= 'Frankfurt'
+WHERE CustomerID = 1;
+
+3) SELECT COUNT(CustomerID), Country
+FROM Customers
+GROUP BY Country
+HAVING COUNT(CustomerID) > 5;
+
+4)SELECT OrderID, Quantity,
+CASE
+    WHEN Quantity > 30 THEN "The quantity is greater than 30"
+    WHEN Quantity = 30 THEN "The quantity is 30"
+    ELSE "The quantity is under 30"
+END AS QuantityText
+FROM OrderDetails;
+
+5)The EXISTS operator is used to test for the existence of any record in a subquery.:
+SELECT column_name(s)
+FROM table_name
+WHERE EXISTS
+(SELECT column_name FROM table_name WHERE condition);
+
+6)The SELECT INTO statement copies data from one table into a new table:
+
+SELECT column1, column2, column3, ...
+INTO newtable [IN externaldb]
+FROM oldtable
+WHERE condition;
+
+
+Using the dense_rank()   to get  the top 10 salaries:
+select * from(
+select ename, sal, dense_rank() 
+over(order by sal desc)r from emp) 
+where r   BETWEEN  1 and 10;
+
+The INNER JOIN keyword selects records that have matching values in both tables.
+syntax:
+SELECT column_name(s)
+FROM table1
+INNER JOIN table2
+ON table1.column_name = table2.column_name;
+
+The LEFT JOIN keyword returns all records from the left table (table1), and the matched records from the right table (table2). The result is NULL from the right side, if there is no match.
+syntax:
+SELECT column_name(s)
+FROM table1
+LEFT JOIN table2
+ON table1.column_name = table2.column_name;
+
+The RIGHT JOIN keyword returns all records from the right table (table2), and the matched records from the left table (table1). The result is NULL from the left side, when there is no match.
+
+SELECT column_name(s)
+FROM table1
+RIGHT JOIN table2
+ON table1.column_name = table2.column_name;
+
+
+-----SQL constraints are used to specify rules for data in a table---------------------------------
+
+SQL NOT NULL Constraint:
+The NOT NULL constraint enforces a column to NOT accept NULL values.
+
+CREATE TABLE Persons (
+    ID int NOT NULL,
+    LastName varchar(255) NOT NULL,
+    FirstName varchar(255) NOT NULL,
+    Age int
+);
+
+
+SQL UNIQUE Constraint
+The UNIQUE constraint ensures that all values in a column are different
+
+
+
+Testng Suite for groups:
+
+
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+ 
+<suite name="softwaretestingmaterial">
+	<test name="testngTest">
+
+		<groups>
+                    <dependencies>
+                          <group name="FirstGroup" depends-on="SecondGroup"></group>
+                    </dependencies>
+                </groups>
+	
+		<classes>
+			<class name="softwareTestingMaterial.DependsOnMethodsTestCase" />
+		</classes>
+		
+	</test>
+</suite>

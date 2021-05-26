@@ -1,0 +1,6 @@
+D:\apache-maven-3.6.0\binD:\apache-maven-3.6.0\binD:\
+
+mvn archetype:generate -DgroupId=ACADEMY -DartifactId=ETEPROJECT -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
+
+
+<a href="http://qaclickacademy.usefedora.com/sign_in"><i class="fa fa-lock fa-lg"></i><span>Login</span></a>

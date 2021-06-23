@@ -1,0 +1,5 @@
+This is the new file
+
+This is a neww file used to push the code in the GIT
+
+It maintains all the new filw details
